@@ -1,9 +1,9 @@
 require 'active_record'
-require './lib/cashier'
-require './lib/customer'
-require './lib/product'
-require './lib/purchase'
-require './lib/sale'
+require 'cashier'
+require 'customer'
+require 'product'
+require 'purchase'
+require 'sale'
 
 database_configurations = YAML::load(File.open('./db/config.yml'))
 development_configuration = database_configurations['test']

@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826170135) do
+ActiveRecord::Schema.define(version: 20140826182006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cashier", force: true do |t|
+  create_table "cashiers", force: true do |t|
     t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "customer", force: true do |t|
+  create_table "customers", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
