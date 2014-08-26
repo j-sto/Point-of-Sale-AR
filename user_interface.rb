@@ -4,6 +4,7 @@ require './lib/customer'
 require './lib/product'
 require './lib/purchase'
 require './lib/sale'
+require 'pry'
 
 database_configurations = YAML::load(File.open('./db/config.yml'))
 development_configuration = database_configurations['development']
@@ -61,6 +62,7 @@ def new_purchase
   new_sale = Sale.create({customer_id: current_customer.id, cashier_id: current_cashier.id})
   current_customer.sales << new_sale
   current_cashier.sales << new_sale
+  binding.pry
   loop do
     system ("clear")
     puts "Here is a list of products for sale."
@@ -88,8 +90,16 @@ def new_purchase
   end
 end
 
-def check_out(current_sale)
-  puts current_sale
+def check_out(new_sale)
+  total = 0.0
+  new_sale.purchases.each do |purchase|
+    puts "#{purchase.quantity} #{purchase.product.name} $#{purchase.product.price}"
+    total += purchase.product.price * purchase.quantity
+  end
+  puts "total = $#{total}"
+
+  gets.chomp
+  main_menu
 end
 
 main_menu
