@@ -8,6 +8,6 @@ describe Cashier do
     new_sale1 = Sale.create
     new_cashier.sales << new_sale1
     new_customer.sales << new_sale1
-    expect(new_customer.sales).to eq [new_sale1]
+    expect(new_cashier.sales).to eq [new_sale1]
   end
 end
